@@ -1,14 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:panucci_delivery/components/cartao.dart';
-
+import 'package:panucci_delivery/models/carrinho_provider.dart';
 import '../components/search_input.dart';
 
-class Home extends StatelessWidget {
+class Home extends StatefulWidget {
   Home({Key? key}) : super(key: key);
+
+  @override
+  State<Home> createState() => _HomeState();
+}
+
+class _HomeState extends State<Home> {
   final TextEditingController searchTextController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
+    CarrinhoProvider carrinho = CarrinhoProvider.of(context);
     return SafeArea(
       child: Scaffold(
         body: CustomScrollView(
@@ -29,6 +36,7 @@ class Home extends StatelessWidget {
                   height: 120,
                   padding: const EdgeInsets.all(16),
                   decoration: BoxDecoration(color: Theme.of(context).colorScheme.surfaceTint),
+                  child: Text(carrinho.carrinhoCounter.toString()),
                 ),
               ),
             )

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:panucci_delivery/models/carrinho_provider.dart';
 
 class Contador extends StatefulWidget {
 const Contador({ Key? key }) : super(key: key);
@@ -8,7 +9,6 @@ const Contador({ Key? key }) : super(key: key);
 }
 
 class _ContadorState extends State<Contador> {
-  int _counter = 0;
   @override
   Widget build(BuildContext context){
     return Row(
@@ -18,19 +18,18 @@ class _ContadorState extends State<Contador> {
           borderRadius: BorderRadius.circular(20),
           onTap: () {
             setState(() {
-              if(_counter > 0) {
-                _counter--;
+              if(CarrinhoProvider.of(context).carrinhoCounter > 0) {
               }
             });
           },
           child: const Icon(Icons.remove_circle_outline, size: 20,),
         ),
-        Text(_counter.toString()),
+        Text(CarrinhoProvider.of(context).carrinhoCounter.toString()),
         InkWell(
           borderRadius: BorderRadius.circular(20),
           onTap: () {
             setState(() {
-              _counter++;
+              print(CarrinhoProvider.of(context).carrinhoCounter);
             });
           },
           child: const Icon(Icons.add_circle_outline, size: 20,),
