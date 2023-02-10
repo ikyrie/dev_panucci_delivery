@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:panucci_delivery/components/cartao.dart';
+import 'package:panucci_delivery/models/carrinho.dart';
 import 'package:panucci_delivery/models/carrinho_provider.dart';
+import 'package:panucci_delivery/store/carrinho_store.dart';
 import '../components/search_input.dart';
 
 class Home extends StatefulWidget {
@@ -9,6 +12,8 @@ class Home extends StatefulWidget {
   @override
   State<Home> createState() => _HomeState();
 }
+
+final CarrinhoStore carrinhoStore = CarrinhoStore();
 
 class _HomeState extends State<Home> {
   final TextEditingController searchTextController = TextEditingController();
@@ -32,11 +37,13 @@ class _HomeState extends State<Home> {
               hasScrollBody: false,
               child: Align(
                 alignment: Alignment.bottomCenter,
-                child: Container(
-                  height: 120,
-                  padding: const EdgeInsets.all(16),
-                  decoration: BoxDecoration(color: Theme.of(context).colorScheme.surfaceTint),
-                  child: Text(carrinho.carrinhoCounter.toString()),
+                child: Observer(
+                  builder: (_) => Container(
+                    height: 120,
+                    padding: const EdgeInsets.all(16),
+                    decoration: BoxDecoration(color: Theme.of(context).colorScheme.surfaceTint),
+                    child: Text(carrinho.toString()),
+                  ),
                 ),
               ),
             )

@@ -23,7 +23,7 @@ const Cartao({ Key? key }) : super(key: key);
               padding: const EdgeInsets.all(8.0),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
-                children: const <Widget>[
+                children: <Widget>[
                   Padding(
                     padding: EdgeInsets.only(bottom: 8.0),
                     child: Text("Pão Rapid10", style: TextStyle(fontWeight: FontWeight.w600),),
