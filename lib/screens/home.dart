@@ -3,7 +3,9 @@ import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:panucci_delivery/components/cartao.dart';
 import 'package:panucci_delivery/models/carrinho.dart';
 import 'package:panucci_delivery/models/carrinho_provider.dart';
+import 'package:panucci_delivery/store/basket_store.dart';
 import 'package:panucci_delivery/store/carrinho_store.dart';
+import 'package:provider/provider.dart';
 import '../components/search_input.dart';
 
 class Home extends StatefulWidget {
@@ -20,7 +22,7 @@ class _HomeState extends State<Home> {
 
   @override
   Widget build(BuildContext context) {
-    CarrinhoProvider carrinho = CarrinhoProvider.of(context);
+final basketStore = Provider.of<BasketStore>(context, listen: false);
     return SafeArea(
       child: Scaffold(
         body: CustomScrollView(
@@ -42,7 +44,7 @@ class _HomeState extends State<Home> {
                     height: 120,
                     padding: const EdgeInsets.all(16),
                     decoration: BoxDecoration(color: Theme.of(context).colorScheme.surfaceTint),
-                    child: Text(carrinho.toString()),
+                    child: Text(basketStore.totalInBasket.toString()),
                   ),
                 ),
               ),
