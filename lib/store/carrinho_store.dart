@@ -8,40 +8,27 @@ class CarrinhoStore = _CarrinhoStore with _$CarrinhoStore;
 abstract class _CarrinhoStore with Store {
 
   @observable
-  List<Item> itemsInBasket = <Item>[];
+  List<Item> itemsInBasket = ObservableList<Item>();
 
   @observable
   double totalCost = 0;
 
-  @observable
-  int totalItemsInBasket = 0;
+  @computed
+  int get totalItemsInBasket => itemsInBasket.length ;
 
-  @observable
-  bool emptyBasket = true;
-
-  void updateBasketState() {
-    emptyBasket = itemsInBasket.isEmpty;
-  }
+  @computed
+  bool get emptyBasket => itemsInBasket.isEmpty;
 
   @action
   void addToBasket(Item item) {
     itemsInBasket.add(item);
-    updateTotalItemsInBasket();
-    updateBasketState();
     updateTotalCost();
   }
 
   @action
   void removeFromBasket(Item item) {
     itemsInBasket.remove(item);
-    updateTotalItemsInBasket();
-    updateBasketState();
     updateTotalCost();
-  }
-
-  @action
-  void updateTotalItemsInBasket() {
-    totalItemsInBasket = itemsInBasket.length; 
   }
 
   @action

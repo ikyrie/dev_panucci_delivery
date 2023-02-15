@@ -9,6 +9,21 @@ part of 'carrinho_store.dart';
 // ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic, no_leading_underscores_for_local_identifiers
 
 mixin _$CarrinhoStore on _CarrinhoStore, Store {
+  Computed<int>? _$totalItemsInBasketComputed;
+
+  @override
+  int get totalItemsInBasket => (_$totalItemsInBasketComputed ??= Computed<int>(
+          () => super.totalItemsInBasket,
+          name: '_CarrinhoStore.totalItemsInBasket'))
+      .value;
+  Computed<bool>? _$emptyBasketComputed;
+
+  @override
+  bool get emptyBasket =>
+      (_$emptyBasketComputed ??= Computed<bool>(() => super.emptyBasket,
+              name: '_CarrinhoStore.emptyBasket'))
+          .value;
+
   late final _$itemsInBasketAtom =
       Atom(name: '_CarrinhoStore.itemsInBasket', context: context);
 
@@ -41,38 +56,6 @@ mixin _$CarrinhoStore on _CarrinhoStore, Store {
     });
   }
 
-  late final _$totalItemsInBasketAtom =
-      Atom(name: '_CarrinhoStore.totalItemsInBasket', context: context);
-
-  @override
-  int get totalItemsInBasket {
-    _$totalItemsInBasketAtom.reportRead();
-    return super.totalItemsInBasket;
-  }
-
-  @override
-  set totalItemsInBasket(int value) {
-    _$totalItemsInBasketAtom.reportWrite(value, super.totalItemsInBasket, () {
-      super.totalItemsInBasket = value;
-    });
-  }
-
-  late final _$emptyBasketAtom =
-      Atom(name: '_CarrinhoStore.emptyBasket', context: context);
-
-  @override
-  bool get emptyBasket {
-    _$emptyBasketAtom.reportRead();
-    return super.emptyBasket;
-  }
-
-  @override
-  set emptyBasket(bool value) {
-    _$emptyBasketAtom.reportWrite(value, super.emptyBasket, () {
-      super.emptyBasket = value;
-    });
-  }
-
   late final _$_CarrinhoStoreActionController =
       ActionController(name: '_CarrinhoStore', context: context);
 
@@ -93,17 +76,6 @@ mixin _$CarrinhoStore on _CarrinhoStore, Store {
         name: '_CarrinhoStore.removeFromBasket');
     try {
       return super.removeFromBasket(item);
-    } finally {
-      _$_CarrinhoStoreActionController.endAction(_$actionInfo);
-    }
-  }
-
-  @override
-  void updateTotalItemsInBasket() {
-    final _$actionInfo = _$_CarrinhoStoreActionController.startAction(
-        name: '_CarrinhoStore.updateTotalItemsInBasket');
-    try {
-      return super.updateTotalItemsInBasket();
     } finally {
       _$_CarrinhoStoreActionController.endAction(_$actionInfo);
     }
