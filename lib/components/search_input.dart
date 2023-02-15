@@ -6,13 +6,16 @@ final TextEditingController searchTextController;
 
   @override
   Widget build(BuildContext context){
-    return TextFormField(
-                controller: searchTextController,
-                decoration: const InputDecoration(
-                    border: OutlineInputBorder(borderRadius: BorderRadius.all(Radius.circular(50))),
-                    hintText: "Busque um produto",
-                    prefixIcon: Icon(Icons.search),
+    return Padding(
+      padding: const EdgeInsets.all(16.0),
+      child: TextFormField(
+                  controller: searchTextController,
+                  decoration: const InputDecoration(
+                      border: OutlineInputBorder(borderRadius: BorderRadius.all(Radius.circular(50))),
+                      hintText: "Busque um produto",
+                      prefixIcon: Icon(Icons.search),
+                ),
               ),
-            );
+    );
   }
 }
