@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:panucci_delivery/components/contador.dart';
 
+import '../models/item.dart';
+
 class Cartao extends StatelessWidget {
-const Cartao({ Key? key }) : super(key: key);
+const Cartao({ Key? key, required this.item }) : super(key: key);
+final Item item;
 
   @override
   Widget build(BuildContext context){
@@ -26,13 +29,13 @@ const Cartao({ Key? key }) : super(key: key);
                 children: <Widget>[
                   Padding(
                     padding: EdgeInsets.only(bottom: 8.0),
-                    child: Text("Pão Rapid10", style: TextStyle(fontWeight: FontWeight.w600),),
+                    child: Text(item.nome, style: TextStyle(fontWeight: FontWeight.w600),),
                   ),
                   Padding(
                     padding: EdgeInsets.only(bottom: 8.0),
-                    child: Text("R\$40,00"),
+                    child: Text("R\$ ${item.preco}"),
                   ),
-                  Contador(),
+                  Contador(item: item),
                 ],
               ),
             ),

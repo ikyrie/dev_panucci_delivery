@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:panucci_delivery/cardapio.dart';
 
+import '../models/item.dart';
 import 'cartao.dart';
 
 class ItemList extends StatelessWidget {
   const ItemList({Key? key, required this.categoria}) : super(key: key);
   final String categoria;
+  final List<Item> cardapio = todosOsItems;
 
   @override
   Widget build(BuildContext context) {
@@ -13,11 +16,15 @@ class ItemList extends StatelessWidget {
       child: ConstrainedBox(
         constraints: const BoxConstraints(maxHeight: 150),
         child: ListView.builder(
-          itemBuilder: (index, context) {
-            return const Cartao();
+          itemBuilder: (context, index) {
+            if(cardapio[index].categoria == categoria) {
+              return Cartao(item: cardapio[index]);
+            } else {
+              return Container();
+            }
           },
           scrollDirection: Axis.horizontal,
-          itemCount: 10,
+          itemCount: cardapio.length,
         ),
       ),
     );

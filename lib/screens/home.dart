@@ -28,19 +28,15 @@ class Home extends StatelessWidget {
             const SliverToBoxAdapter(
                 child: CategoriaText(titulo: "Para o almoço")),
             SliverToBoxAdapter(
-              child: ItemList(
-                categoria: "para o almoço",
-              ),
+              child: ItemList(categoria: "para o almoço"),
             ),
             const SliverToBoxAdapter(
                 child: CategoriaText(titulo: "Para dividir")),
             SliverToBoxAdapter(
-              child: ItemList(
-                categoria: "para dividir",
-              ),
+              child: ItemList(categoria: "para dividir"),
             ),
             Observer(builder: (_) => 
-            carrinhoStore.emptyBasket ? SliverFillRemaining(
+            !carrinhoStore.emptyBasket ? SliverFillRemaining(
               hasScrollBody: false,
               child: Align(
                 alignment: Alignment.bottomCenter,
@@ -60,7 +56,7 @@ class Home extends StatelessWidget {
                               Padding(
                                 padding: const EdgeInsets.only(right: 4.0),
                                 child: Text(
-                                  carrinhoStore.totalInBasket.toString(),
+                                  carrinhoStore.totalItemsInBasket.toString(),
                                   style: TextStyle(
                                       color: Theme.of(context)
                                           .colorScheme
@@ -82,7 +78,7 @@ class Home extends StatelessWidget {
                                     Theme.of(context).colorScheme.onPrimary),
                           ),
                           Text(
-                            "R\$ 00,00",
+                            "R\$ ${carrinhoStore.totalCost}",
                             style: TextStyle(
                                 color:
                                     Theme.of(context).colorScheme.onPrimary),

@@ -1,4 +1,5 @@
 import 'package:mobx/mobx.dart';
+import 'package:panucci_delivery/models/item.dart';
 
 part 'carrinho_store.g.dart';
 
@@ -7,19 +8,48 @@ class CarrinhoStore = _CarrinhoStore with _$CarrinhoStore;
 abstract class _CarrinhoStore with Store {
 
   @observable
-  int totalInBasket = 0;
+  List<Item> itemsInBasket = <Item>[];
 
-  @computed
-  bool get emptyBasket => totalInBasket > 0;
+  @observable
+  double totalCost = 0;
 
-  @action
-  void addToBasket() {
-    totalInBasket++;
+  @observable
+  int totalItemsInBasket = 0;
+
+  @observable
+  bool emptyBasket = true;
+
+  void updateBasketState() {
+    emptyBasket = itemsInBasket.isEmpty;
   }
 
   @action
-  void removeFromBasket() {
-    totalInBasket--;
+  void addToBasket(Item item) {
+    itemsInBasket.add(item);
+    updateTotalItemsInBasket();
+    updateBasketState();
+    updateTotalCost();
+  }
+
+  @action
+  void removeFromBasket(Item item) {
+    itemsInBasket.remove(item);
+    updateTotalItemsInBasket();
+    updateBasketState();
+    updateTotalCost();
+  }
+
+  @action
+  void updateTotalItemsInBasket() {
+    totalItemsInBasket = itemsInBasket.length; 
+  }
+
+  @action
+  void updateTotalCost() {
+    totalCost = 0;
+    for (var i = 0; i < itemsInBasket.length; i++) {
+      totalCost += itemsInBasket[i].preco;
+    }
   }
 
 }
