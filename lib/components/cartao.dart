@@ -10,6 +10,8 @@ final Item item;
   @override
   Widget build(BuildContext context){
     return Card(
+      color: const Color(0xFFF6F6F6),
+      elevation: 0,
       clipBehavior: Clip.hardEdge,
       child: ConstrainedBox(
         constraints: const BoxConstraints(maxWidth: 134),
