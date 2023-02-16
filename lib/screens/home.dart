@@ -42,46 +42,54 @@ class Home extends StatelessWidget {
                 alignment: Alignment.bottomCenter,
                 child: Container(
                     width: double.infinity,
-                    height: 120,
+                    height: 80,
                     padding: const EdgeInsets.all(16),
                     decoration: BoxDecoration(
                         color: Theme.of(context).colorScheme.surfaceTint,
                         borderRadius:
                             BorderRadius.vertical(top: Radius.circular(10))),
-                    child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    child: Stack(
                         children: [
-                          Row(
-                            children: [
-                              Padding(
-                                padding: const EdgeInsets.only(right: 4.0),
-                                child: Text(
-                                  carrinhoStore.totalItemsInBasket.toString(),
-                                  style: TextStyle(
-                                      color: Theme.of(context)
-                                          .colorScheme
-                                          .onPrimary),
+                          Align(
+                            alignment: Alignment.centerLeft,
+                            child: Row(
+                              children: [
+                                Padding(
+                                  padding: const EdgeInsets.only(right: 4.0),
+                                  child: Text(
+                                    carrinhoStore.totalItemsInBasket.toString(),
+                                    style: TextStyle(
+                                        color: Theme.of(context)
+                                            .colorScheme
+                                            .onPrimary),
+                                  ),
                                 ),
-                              ),
-                              Icon(
-                                Icons.shopping_basket_outlined,
-                                size: 20,
-                                color:
-                                    Theme.of(context).colorScheme.onPrimary,
-                              )
-                            ],
+                                Icon(
+                                  Icons.shopping_basket_outlined,
+                                  size: 20,
+                                  color:
+                                      Theme.of(context).colorScheme.onPrimary,
+                                )
+                              ],
+                            ),
                           ),
-                          Text(
-                            "Ver carrinho",
-                            style: TextStyle(
-                                color:
-                                    Theme.of(context).colorScheme.onPrimary),
+                          Align(
+                            alignment: Alignment.center,
+                            child: Text(
+                              "Ver carrinho",
+                              style: TextStyle(
+                                  color:
+                                      Theme.of(context).colorScheme.onPrimary),
+                            ),
                           ),
-                          Text(
-                            "R\$ ${carrinhoStore.totalCost}",
-                            style: TextStyle(
-                                color:
-                                    Theme.of(context).colorScheme.onPrimary),
+                          Align(
+                            alignment: Alignment.centerRight,
+                            child: Text(
+                              "R\$ ${carrinhoStore.totalCost.toStringAsFixed(2)}",
+                              style: TextStyle(
+                                  color:
+                                      Theme.of(context).colorScheme.onPrimary),
+                            ),
                           ),
                         ])),
               ),
