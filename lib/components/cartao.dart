@@ -16,8 +16,8 @@ final Item item;
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
-            const Image(
-              image: AssetImage("assets/images/coxinhas.png"),
+            Image(
+              image: AssetImage(item.uri),
               width: double.infinity,
               height: 50,
               fit: BoxFit.cover,

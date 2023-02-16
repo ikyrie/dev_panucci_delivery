@@ -63,7 +63,24 @@ flutter:
   # the material Icons class.
   uses-material-design: true
   assets:
+    - assets/images/caipirinha.jpg
+    - assets/images/chicken-salad.png
+    - assets/images/chicken-tender.png
+    - assets/images/chicken-tortilla.png
+    - assets/images/cold-noodles.png
     - assets/images/coxinhas.png
+    - assets/images/fish-n-salsa.png
+    - assets/images/hamburger-ink.png
+    - assets/images/pamonha.png
+    - assets/images/penne-au-sugo.png
+    - assets/images/rice-n-beans.jpg
+    - assets/images/shrimp-n-rice.png
+    - assets/images/spagetti.png
+    - assets/images/steak-veggies.png
+    - assets/images/steak.png
+    - assets/images/tapioca-taco.jpg
+    - assets/images/lasagna-bolognese.jpg
+    - assets/images/visa.png
 
   # To add assets to your application, add an assets section, like this:
   # assets:
