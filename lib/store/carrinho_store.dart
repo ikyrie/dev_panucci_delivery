@@ -14,7 +14,7 @@ abstract class _CarrinhoStore with Store {
   double totalCost = 0;
 
   @computed
-  int get totalItemsInBasket => itemsInBasket.length ;
+  int get totalItemsInBasket => itemsInBasket.length;
 
   @computed
   bool get emptyBasket => itemsInBasket.isEmpty;

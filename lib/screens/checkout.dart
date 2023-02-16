@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+import '../components/order_item.dart';
 import '../components/payment_method.dart';
 import '../components/payment_total.dart';
 import '../store/carrinho_store.dart';
@@ -28,8 +29,10 @@ class Checkout extends StatelessWidget {
                 ),
               ),
               SliverList(
-                  delegate: SliverChildBuilderDelegate((context, index) {},
-                      childCount: 3)),
+                  delegate: SliverChildBuilderDelegate((context, index) {
+                    return OrderItem(item: carrinhoStore.itemsInBasket[index]);
+                  },
+                      childCount: carrinhoStore.totalItemsInBasket)),
               const SliverToBoxAdapter(
                 child: Padding(
                   padding: EdgeInsets.only(bottom: 8.0),
