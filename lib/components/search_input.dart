@@ -11,9 +11,11 @@ final TextEditingController searchTextController;
       child: TextFormField(
                   controller: searchTextController,
                   decoration: const InputDecoration(
-                      border: OutlineInputBorder(borderRadius: BorderRadius.all(Radius.circular(50))),
-                      hintText: "Busque um produto",
-                      prefixIcon: Icon(Icons.search),
+                    contentPadding: EdgeInsets.all(8.0),
+                    constraints: BoxConstraints(maxHeight: 45),
+                    border: OutlineInputBorder(borderRadius: BorderRadius.all(Radius.circular(50))),
+                    hintText: "Busque um produto",
+                    prefixIcon: Icon(Icons.search),
                 ),
               ),
     );
