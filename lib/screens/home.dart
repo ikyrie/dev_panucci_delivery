@@ -22,17 +22,17 @@ class Home extends StatelessWidget {
                 child: SearchInput(searchTextController: searchTextController)),
             const SliverToBoxAdapter(
                 child: CategoriaText(titulo: "Mais comprados")),
-            SliverToBoxAdapter(
+            const SliverToBoxAdapter(
               child: ItemList(categoria: "mais comprados"),
             ),
             const SliverToBoxAdapter(
                 child: CategoriaText(titulo: "Para o almoço")),
-            SliverToBoxAdapter(
+            const SliverToBoxAdapter(
               child: ItemList(categoria: "para o almoço"),
             ),
             const SliverToBoxAdapter(
                 child: CategoriaText(titulo: "Para dividir")),
-            SliverToBoxAdapter(
+            const SliverToBoxAdapter(
               child: ItemList(categoria: "para dividir"),
             ),
             Observer(builder: (_) => 
@@ -47,7 +47,7 @@ class Home extends StatelessWidget {
                     decoration: BoxDecoration(
                         color: Theme.of(context).colorScheme.surfaceTint,
                         borderRadius:
-                            BorderRadius.vertical(top: Radius.circular(10))),
+                            const BorderRadius.vertical(top: Radius.circular(10))),
                     child: Stack(
                         children: [
                           Align(
@@ -55,18 +55,18 @@ class Home extends StatelessWidget {
                             child: Row(
                               children: [
                                 Padding(
-                                  padding: const EdgeInsets.only(right: 4.0),
+                                  padding: const EdgeInsets.only(right: 8.0),
                                   child: Text(
                                     carrinhoStore.totalItemsInBasket.toString(),
                                     style: TextStyle(
-                                        color: Theme.of(context)
-                                            .colorScheme
-                                            .onPrimary),
+                                      fontSize: 16,
+                                      color: 
+                                        Theme.of(context).colorScheme.onPrimary),
                                   ),
                                 ),
                                 Icon(
                                   Icons.shopping_basket_outlined,
-                                  size: 20,
+                                  size: 24,
                                   color:
                                       Theme.of(context).colorScheme.onPrimary,
                                 )
@@ -78,8 +78,9 @@ class Home extends StatelessWidget {
                             child: Text(
                               "Ver carrinho",
                               style: TextStyle(
-                                  color:
-                                      Theme.of(context).colorScheme.onPrimary),
+                                fontSize: 16,
+                                color: 
+                                  Theme.of(context).colorScheme.onPrimary),
                             ),
                           ),
                           Align(
@@ -87,14 +88,15 @@ class Home extends StatelessWidget {
                             child: Text(
                               "R\$ ${carrinhoStore.totalCost.toStringAsFixed(2)}",
                               style: TextStyle(
-                                  color:
-                                      Theme.of(context).colorScheme.onPrimary),
+                                fontSize: 16,
+                                color:
+                                  Theme.of(context).colorScheme.onPrimary),
                             ),
                           ),
                         ])),
               ),
             )
-            : SliverToBoxAdapter())
+            : const SliverToBoxAdapter())
           ],
         ),
       ),
