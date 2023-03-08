@@ -14,7 +14,7 @@ final TextEditingController searchTextController;
                     contentPadding: EdgeInsets.all(8.0),
                     constraints: BoxConstraints(maxHeight: 45),
                     border: OutlineInputBorder(borderRadius: BorderRadius.all(Radius.circular(50))),
-                    hintText: "Busque um produto",
+                    hintText: "Buscar um item",
                     prefixIcon: Icon(Icons.search),
                 ),
               ),
